@@ -14,11 +14,11 @@ const SideBar: React.FC = () => {
         <RavnLogo />
       </LogoContainer>
       <div>
-        <Tab to={'/'} selectedTab={location.pathname === '/'}>
+        <Tab to={'/'} selected={location.pathname === '/'}>
           <DashboardIcon />
           <TitleTab>DASHBOARD</TitleTab>
         </Tab>
-        {/* <Tab to={'/task'} selectedTab={location.pathname === '/task'}>
+        {/* <Tab to={'/task'} selected={location.pathname === '/task'}>
           <TaskIcon />
           <TitleTab>MY TASK</TitleTab>
         </Tab> */}
@@ -58,7 +58,7 @@ const Tab = styled(Link)<TabSidebar>`
     fill: ${(props) => props.theme.primary};
   }
   ${(props) => {
-    if (props.selectedTab) {
+    if (props.selected) {
       return css`
         background-image: linear-gradient(
           to right,

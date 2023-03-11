@@ -12,12 +12,12 @@ const TopBar: React.FC = () => {
     <Container>
       <SwitchContainer>
         {/* <Link to={'/task'}>
-          <SwitchButtons selectedTab={location.pathname === '/task'}>
+          <SwitchButtons selected={location.pathname === '/task'}>
             <TaskIcon />
           </SwitchButtons>
         </Link> */}
         <Link to={'/'} >
-          <SwitchButtons selectedTab={location.pathname === '/'}>
+          <SwitchButtons selected={location.pathname === '/'}>
             <DashboardIcon />
           </SwitchButtons>
         </Link>
@@ -54,7 +54,7 @@ const SwitchButtons = styled.button<TabSidebar>`
     fill: ${(props) => props.theme.primary};
   }
   ${(props) => {
-    if (props.selectedTab) {
+    if (props.selected) {
       return css`
         fill: ${(props) => props.theme.primary};
         border: solid 1px ${(props) => props.theme.primary};

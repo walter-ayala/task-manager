@@ -1,5 +1,5 @@
 export interface TabSidebar {
-  selectedTab: boolean
+  selected: boolean
 }
 
 export interface Tags {
@@ -9,6 +9,11 @@ export interface Tags {
 
 export interface WeightText {
   normalWeight?: boolean
+}
+
+export interface TimerStyles {
+  bgcolor: string
+  textcolor: string
 }
 
 export enum TaskTag {
@@ -61,4 +66,9 @@ export interface Task {
   position: number
   status: string
   tags: string[]
+}
+
+export interface TaskList {
+  title: string
+  values: Task[]
 }
