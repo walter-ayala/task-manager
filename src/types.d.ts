@@ -1,10 +1,16 @@
-export interface TabSidebar {
+export interface OptionSelected {
   selected: boolean
 }
 
 export interface Tags {
   first: boolean
   name: string
+}
+
+export interface ButtonComponent {
+  onClick: () => void
+  children: JSX.Element
+  main?: boolean
 }
 
 export interface WeightText {
@@ -16,43 +22,51 @@ export interface TimerStyles {
   textcolor: string
 }
 
-export enum TaskTag {
-  ANDROID = 'ANDROID',
-  IOS = 'IOS',
-  NODE_JS = 'NODE_JS',
-  RAILS = 'RAILS',
-  REACT = 'REACT',
+export interface TopOptions {
+  openModal: () => void
 }
 
-export enum Status {
-  BACKLOG = 'BACKLOG',
-  CANCELLED = 'CANCELLED',
-  DONE = 'DONE',
-  IN_PROGRESS = 'IN_PROGRESS',
-  TODO = 'TODO',
+export interface Modals {
+  isOpen: boolean
+  toggleModal: () => void
+  children: JSX.Element
 }
 
-export enum PointEstimate {
-  EIGHT = 'EIGHT',
-  FOUR = 'FOUR',
-  ONE = 'ONE',
-  TWO = 'TWO',
-  ZERO = 'ZERO',
+export interface Form {
+  assigneeId: string
+  dueDate: Date
+  name: string
+  pointEstimate: string
+  status: string
+  tags: string[]
 }
 
-enum UserType {
-  ADMIN = 'ADMIN',
-  CANDIDATE = 'CANDIDATE',
+export interface Options {
+  id: string
+  label?: string
+  avatar?: string
+}
+
+export interface MenuForm {
+  icon: JSX.Element
+  title: string
+  titleModal: string
+  options: Options[]
+  loading?: boolean
+  onChange: (value: string) => void
+  multipleSelect?: boolean
+  valueSelected: string | string[]
 }
 
 export interface User {
-  avatar: string
+  avatar?: string
   createdAt?: string
   email?: string
   fullName: string
-  id?: string
-  type?: UserType
-  updatedAt?: DateTime
+  id: string
+  type?: string
+  updatedAt?: string
+  label?: string
 }
 
 export interface Task {

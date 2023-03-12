@@ -9,9 +9,18 @@ import { type TimerStyles, type Task, type WeightText } from '../../types'
 import compareDates from '../../utils/compareDates'
 import OptionsMenu from './OptionsMenu'
 import Tag from './Tag'
+import ProfileAvatar from '../../assets/images/ProfileAvatar.png'
 
 interface Props {
   task: Task
+}
+
+enum PointEstimate {
+  EIGHT = '8',
+  FOUR = '4',
+  ONE = '1',
+  TWO = '2',
+  ZERO = '0',
 }
 
 const TaskCard: React.FC<Props> = ({ task }) => {
@@ -29,7 +38,7 @@ const TaskCard: React.FC<Props> = ({ task }) => {
         <OptionsMenu />
       </RowContainer>
       <RowContainer>
-        <InformationTask>{task.pointEstimate} points</InformationTask>
+        <InformationTask>{PointEstimate[task.pointEstimate as keyof typeof PointEstimate]} points</InformationTask>
         {dueDateInformation.backgroundColor.length > 1 &&
           <Timer bgcolor={dueDateInformation.backgroundColor} textcolor={dueDateInformation.textColor}>
             <Clock />
@@ -47,7 +56,7 @@ const TaskCard: React.FC<Props> = ({ task }) => {
         }
       </TagsContainer>
       <RowContainer>
-        <img src={task.assignee.avatar} alt="profileAvatar" width={32} height={32} style={{ borderRadius: '50%' }} />
+        <img src={task.assignee.avatar ?? ProfileAvatar} alt="profileAvatar" width={32} height={32} style={{ borderRadius: '50%' }} />
         <IconsSection>
           <PaperClipIcon />
           <InformationTask normalWeight>
@@ -124,6 +133,7 @@ const Timer = styled.div<TimerStyles>`
   & {
     color: ${(props) => props.textcolor};
     fill: ${(props) => props.textcolor};
+    text-transform: uppercase;
   }
 `
 

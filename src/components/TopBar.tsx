@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components'
 import AddIcon from '../assets/icons/AddIcon'
 import DashboardIcon from '../assets/icons/DashboardIcon'
 // import TaskIcon from '../assets/icons/TaskIcon'
-import { type TabSidebar } from '../types'
+import { type TopOptions, type OptionSelected } from '../types'
 
-const TopBar: React.FC = () => {
+const TopBar: React.FC<TopOptions> = ({ openModal }) => {
   const location = useLocation()
 
   return (
@@ -22,7 +22,7 @@ const TopBar: React.FC = () => {
           </SwitchButtons>
         </Link>
       </SwitchContainer>
-      <AddButton>
+      <AddButton onClick={openModal}>
         <AddIcon />
       </AddButton>
     </Container>
@@ -43,7 +43,7 @@ const SwitchContainer = styled.div`
   }
 `
 
-const SwitchButtons = styled.button<TabSidebar>`
+const SwitchButtons = styled.button<OptionSelected>`
   display: flex;
   background: transparent;
   padding: 11px;

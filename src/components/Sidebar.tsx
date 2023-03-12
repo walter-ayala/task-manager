@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import DashboardIcon from '../assets/icons/DashboardIcon'
 import RavnLogo from '../assets/icons/RavnLogo'
 // import TaskIcon from '../assets/icons/TaskIcon'
-import { type TabSidebar } from '../types'
+import { type OptionSelected } from '../types'
 
 const SideBar: React.FC = () => {
   const location = useLocation()
@@ -44,7 +44,7 @@ const LogoContainer = styled.div`
   justify-content: center;
 `
 
-const Tab = styled(Link)<TabSidebar>`
+const Tab = styled(Link)<OptionSelected>`
   text-decoration: none;
   display: flex;
   flex-direction: row;
