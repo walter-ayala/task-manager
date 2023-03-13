@@ -4,6 +4,7 @@ import { CREATE_TASK } from '../../api/Dashboard/mutations/createTask'
 import { GET_TASKS } from '../../api/Dashboard/query/getTasks'
 import { GET_USERS } from '../../api/Dashboard/query/getUsers'
 import { type User } from '../../types'
+import confetti from 'canvas-confetti'
 
 const initialValues = {
   assigneeId: '',
@@ -25,6 +26,7 @@ const useForm = (toggleModal: () => void) => {
     variables: form,
     onCompleted () {
       toggleModal()
+      confetti()
     },
     refetchQueries: [{ query: GET_TASKS }, 'GetTasks']
   })

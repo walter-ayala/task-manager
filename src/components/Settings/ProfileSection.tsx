@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client'
+import { DateTime } from 'luxon'
 import styled from 'styled-components'
 import { GET_PROFILE } from '../../api/Settings/getProfile'
 import ProfileAvatar from '../../assets/images/ProfileAvatar.png'
@@ -35,11 +36,11 @@ const ProfileSection = () => {
       </PersonalData>
       <AdditionalInformation>
         <Information>Created at:</Information>
-        <Information>{data?.profile.createdAt}</Information>
+        <Information>{ DateTime.fromISO(data?.profile.createdAt).toFormat('dd LLL, yyyy')}</Information>
       </AdditionalInformation>
       <AdditionalInformation>
         <Information>Updated at:</Information>
-        <Information>{data?.profile.updatedAt}</Information>
+        <Information>{ DateTime.fromISO(data?.profile.updatedAt).toFormat('dd LLL, yyyy')}</Information>
       </AdditionalInformation>
       <AdditionalInformation>
         <Information>Type user:</Information>
