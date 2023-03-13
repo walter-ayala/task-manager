@@ -32,6 +32,13 @@ export interface Modals {
   children: JSX.Element
 }
 
+export interface DeleteModal {
+  toggleModal: () => void
+  onDeleteTask: () => void
+  loadingDeleteTask: boolean
+  errorDeleteTask: GraphQLError
+}
+
 export interface Form {
   assigneeId: string
   dueDate: Date

@@ -35,7 +35,7 @@ const TaskCard: React.FC<Props> = ({ task }) => {
     <Container>
       <RowContainer>
         <TitleTask>{task.name}</TitleTask>
-        <OptionsMenu />
+        <OptionsMenu id={task.id} />
       </RowContainer>
       <RowContainer>
         <InformationTask>{PointEstimate[task.pointEstimate as keyof typeof PointEstimate]} points</InformationTask>

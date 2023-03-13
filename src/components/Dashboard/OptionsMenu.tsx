@@ -2,22 +2,36 @@ import styled from 'styled-components'
 import DeleteIcon from '../../assets/icons/DeleteIcon'
 import EditIcon from '../../assets/icons/EditIcon'
 import OptionsTaskCard from '../../assets/icons/OptionsTaskCard'
+import useDeleteTask from '../../hooks/Dashboard/useDeleteTask'
+import CustomModal from '../CustomModal'
+import DeleteTask from './DeleteTask'
 
-const OptionsMenu: React.FC = () => {
+interface Props {
+  id: string
+}
+
+const OptionsMenu: React.FC<Props> = ({ id }) => {
+  const { isOpenModal, toggleModal, loadingDeleteTask, onDeleteTask, errorDeleteTask } = useDeleteTask(id)
+
   return (
-    <OptionsContainer>
-      <OptionsTaskCard />
-      <Menu>
-        <OptionButton>
-          <EditIcon />
-          Edit
-        </OptionButton>
-        <OptionButton>
-          <DeleteIcon />
-          Delete
-        </OptionButton>
-      </Menu>
-    </OptionsContainer>
+    <div>
+      <OptionsContainer>
+        <OptionsTaskCard />
+        <Menu>
+          <OptionButton>
+            <EditIcon />
+            Edit
+          </OptionButton>
+          <OptionButton onClick={toggleModal}>
+            <DeleteIcon />
+            Delete
+          </OptionButton>
+        </Menu>
+      </OptionsContainer>
+      <CustomModal isOpen={isOpenModal} toggleModal={toggleModal} >
+        <DeleteTask toggleModal={toggleModal} onDeleteTask={onDeleteTask} loadingDeleteTask={loadingDeleteTask} errorDeleteTask={errorDeleteTask} />
+      </CustomModal>
+    </div>
   )
 }
 
@@ -59,7 +73,11 @@ const OptionButton = styled.button`
   line-height: 24px;
   letter-spacing: 0.75;
   justify-content: center;
+  border-radius: 4px;
   color: ${(props) => props.theme.white};
+  &:hover {
+    background-color: ${(props) => props.theme.primary};
+  }
 `
 
 export default OptionsMenu
