@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import BottomTab from '../components/BottomTab'
 import DashboardSection from '../components/Dashboard/DashboardSection'
 import SearchBar from '../components/SearchBar'
 import SideBar from '../components/Sidebar'
@@ -7,7 +8,7 @@ import ThemeLayout from '../layout/ThemeLayout'
 const Dashboard: React.FC = () => {
   return (
     <ThemeLayout>
-      <Container>
+      <GeneralContainer>
         <FlexContainer>
           <SideBar />
           <MainSection>
@@ -15,26 +16,27 @@ const Dashboard: React.FC = () => {
             <DashboardSection/>
           </MainSection>
         </FlexContainer>
-      </Container>
+        <BottomTab/>
+      </GeneralContainer>
     </ThemeLayout>
   )
 }
 
-const Container = styled.div`
+export const GeneralContainer = styled.div`
   display: flex;
   min-height: 100vh;
   font-family: sans-serif;
   background-color: ${(props) => props.theme.backgroundDark};
 `
 
-const FlexContainer = styled.div`
+export const FlexContainer = styled.div`
   display: flex;
   width: 100%;
   padding: 32px;
   gap: 32px;
 `
 
-const MainSection = styled.div`
+export const MainSection = styled.div`
   display: flex;
   width: 100%;
   gap: 36px;

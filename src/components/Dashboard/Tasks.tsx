@@ -1,6 +1,7 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import useTaks from '../../hooks/Dashboard/useTaks'
 import { type TaskList } from '../../types'
+import Spinner from '../Spinner'
 import TaskCard from './TaskCard'
 
 const Tasks: React.FC = () => {
@@ -9,10 +10,9 @@ const Tasks: React.FC = () => {
   if (loading) {
     return (
       <SmallContainer>
-        <SpinnerContainer>
-          <LoadingSpinner />
+        <Spinner>
           <Title>Loading tasks</Title>
-        </SpinnerContainer>
+        </Spinner>
       </SmallContainer>
     )
   }
@@ -54,13 +54,17 @@ const Container = styled.div`
   grid-column-gap: 32px;
   grid-row-gap: 16px;
   align-items: flex-start;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
   overflow-y: auto;
   height: 75vh;
   overflow-x: auto;
   width: calc(100vw - 84px);
-  @media only screen and (min-width: 769px) {
+  @media only screen and (max-width: 850px) {
+    margin-bottom: 100px;
+  }
+  @media only screen and (min-width: 850px) {
     width: calc(100vw - 348px);
+
   }
   ::-webkit-scrollbar {
     height: 0px;
@@ -80,7 +84,7 @@ const Container = styled.div`
 
 const SmallContainer = styled.div`
   display: flex;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -103,32 +107,6 @@ const Title = styled.p`
   line-height: 32px;
   letter-spacing: 0.75px;
   color: ${(props) => props.theme.white};
-`
-
-const SpinnerContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  column-gap: 20px;
-  padding: 10px;
-  @media only screen and (max-width: 500px) {
-    flex-direction: column;
-  }
-`
-const SpinnerAnimation = keyframes`
-  to {
-    transform: rotate(360deg);
-  }
-`
-
-const LoadingSpinner = styled.div`
-  width: 40px;
-  height: 40px;
-  border: 10px solid #f3f3f3; 
-  border-top: 10px solid #383636; 
-  border-radius: 50%;
-  animation: ${SpinnerAnimation} 1.5s linear infinite;
 `
 
 export default Tasks
